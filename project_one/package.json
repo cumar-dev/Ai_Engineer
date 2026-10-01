@@ -5,8 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon server.js"
+    "dev": "nodemon script.js",
+    "start": "nodemon index.js",
+    "server": "nodemon server.js",
+    "client": "nodemon app.js",
+    "action": "nodemon question.js"
   },
   "keywords": [],
   "author": "",
