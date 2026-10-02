@@ -47,6 +47,9 @@ It was created by Brendan Eich in 1995. JavaScript is used for both
 frontend and backend development with Node.js.
 `;
 
-const answer = await answerQuestion(context, "Who created JavaScript?");
+const answer = await answerQuestion(
+  context,
+  "Who created JavaScript? and what is used for ?",
+);
 
 console.log("Answer:", answer);
