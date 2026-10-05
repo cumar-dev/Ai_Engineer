@@ -1,0 +1,17 @@
+{
+  "name": "project_three",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+   "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "nodemon": "^1.14.10"
+  }
+}

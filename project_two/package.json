@@ -1,0 +1,18 @@
+{
+  "name": "project_two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sogni-ai/sogni-client": "^5.60.1",
+    "dotenv": "^18.0.5",
+    "nodemon": "^3.1.14"
+  }
+}
