@@ -1,9 +1,10 @@
-import Register from "./Register/page";
+import Login from "./login/Login";
+
 
 export default function Home() {
-  return(
+  return (
     <>
-    <Register />
+      <Login />
     </>
-  )
+  );
 }

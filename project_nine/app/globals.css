@@ -1,7 +1,66 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+/* ------------------------------------------------------------------
+   Add this to your globals.css (Tailwind v4).
+   Adjust the "../node_modules" path if globals.css is not in app/.
+------------------------------------------------------------------- */
 
+/* 1. THE MAIN FIX: let Tailwind generate the classes Streamdown and its
+      plugins use internally (code block header, copy/download buttons,
+      overflow handling). Without these the header renders unstyled. */
+@source "../node_modules/streamdown/dist/*.js";
+@source "../node_modules/@streamdown/code/dist/*.js";
+@source "../node_modules/@streamdown/mermaid/dist/*.js";
+@source "../node_modules/@streamdown/math/dist/*.js";
+@source "../node_modules/@streamdown/cjk/dist/*.js";
+
+/* 2. Custom emerald light card for code blocks */
+[data-streamdown="code-block"] {
+  margin: 0.75rem 0;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #a7f3d0;
+  border-radius: 0.75rem;
+  background: #f8fffc;
+  box-shadow: 0 1px 2px rgb(16 185 129 / 0.08);
+}
+
+/* Code body: scroll sideways instead of clipping long lines */
+[data-streamdown="code-block"] pre {
+  margin: 0;
+  overflow-x: auto;
+  background: transparent;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+/* Header buttons (copy / download) */
+[data-streamdown="code-block"] button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+[data-streamdown="code-block"] button:hover {
+  background: #d1fae5;
+  color: #047857;
+}
+
+[data-streamdown="code-block"] button:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 1px;
+}
+
+[data-streamdown="code-block"] button svg {
+  width: 1rem;
+  height: 1rem;
+}
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -116,4 +175,3 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-

@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
 import { conversation } from "@/db/schema";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
 export const createConversation = async (
@@ -29,11 +29,20 @@ export const getAllConverstation = async () => {
   return db.select().from(conversation).orderBy(desc(conversation.createdAt));
 };
 
-export const getUserConversationById = async (userId: string) => {
-  return db
+export const getUserConversationById = async (
+  userId: string,
+  conversationId: string,
+) => {
+  const [result] = await db
     .select()
     .from(conversation)
-    .where(eq(conversation.userId, userId))
-    .orderBy(desc(conversation.createdAt));
-};
+    .where(
+      and(
+        eq(conversation.userId, userId),
+        eq(conversation.id, conversationId),
+      ),
+    )
+    .limit(1);
 
+  return result ?? null;
+};

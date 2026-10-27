@@ -20,17 +20,19 @@ const Register = () => {
   const onSubmit = async (data: registerData) => {
     try {
       setIsLoading(true);
-      await signUp(data.name.trim(), data.email.trim(), data.password.trim());
+      setError("");
+      await signUp(data.name.trim(), data.email.trim(), data.password);
       toast.add({
         title: "sing Up",
         description: "user registered successfully",
       });
       router.push("/login");
-      setError("");
       reset();
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "Something went wrong");
       toast.add({ title: "failed to create user" });
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -148,7 +150,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="mt-2 w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:from-emerald-600 hover:to-teal-700 hover:shadow-emerald-500/40 focus:outline-none focus:ring-4 focus:ring-emerald-500/30 active:scale-[0.99]"
+            className="mt-2 w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 cursor-pointer py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:from-emerald-600 hover:to-teal-700 hover:shadow-emerald-500/40 focus:outline-none focus:ring-4 focus:ring-emerald-500/30 active:scale-[0.99]"
           >
             {isLoading ? "creating..." : "Create account"}
           </button>

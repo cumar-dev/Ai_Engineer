@@ -28,7 +28,7 @@ export async function logOut() {
   await auth.api.signOut({
     headers: await headers(),
   });
-  redirect("/Register");
+  redirect("/login");
 }
 
 export async function getUserInfo() {
